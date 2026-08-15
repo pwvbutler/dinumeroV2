@@ -3,7 +3,10 @@ import SwiftUI
 struct DayGridView: View {
     @Bindable var habit: Habit
 
-    private let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 5)
+    private let daysPerRow = 5
+    private var columns: [GridItem] {
+        Array(repeating: GridItem(.flexible(), spacing: 0), count: daysPerRow)
+    }
 
     var body: some View {
         LazyVGrid(columns: columns, spacing: 0) {
