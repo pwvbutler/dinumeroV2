@@ -3,6 +3,8 @@ import SwiftUI
 enum Theme {
     static let background = Color(hex: 0x0C141F)
     static let text = Color(hex: 0xD8DAE7)
+    static let secondaryText = Color(hex: 0x808080)
+    static let accent = Color(hex: 0xE6FFFF)
 
     static let blue = Color(hex: 0x18CAE6)
     static let orange = Color(hex: 0xDF740C)
