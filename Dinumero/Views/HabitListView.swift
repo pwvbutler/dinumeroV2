@@ -3,7 +3,7 @@ import SwiftData
 
 struct HabitListView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Habit.sortOrder) private var habits: [Habit]
+    @Query(sort: \Habit.startDate) private var habits: [Habit]
 
     @State private var habitPendingDelete: Habit?
 
@@ -28,7 +28,7 @@ struct HabitListView: View {
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 0)
+                                Rectangle()
                                     .stroke(Theme.text, style: StrokeStyle(lineWidth: 2, dash: [6, 4]))
                             )
                     }
@@ -45,7 +45,11 @@ struct HabitListView: View {
             .navigationDestination(for: String.self) { _ in
                 AddHabitView()
             }
+            .toolbarBackground(Theme.background, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
         }
+        .tint(Theme.text)
         .statusBarHidden()
         .confirmationDialog(
             "Delete \(habitPendingDelete?.title ?? "")?",

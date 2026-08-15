@@ -11,7 +11,7 @@ struct HabitPillButton: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
             .overlay(
-                RoundedRectangle(cornerRadius: 0)
+                Rectangle()
                     .stroke(colour, lineWidth: 2)
             )
     }
