@@ -7,7 +7,7 @@ struct HabitPillButton: View {
     var body: some View {
         Text(title)
             .font(.system(.body, design: .default, weight: .bold))
-            .foregroundStyle(Theme.text)
+            .foregroundStyle(colour)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
             .overlay(
