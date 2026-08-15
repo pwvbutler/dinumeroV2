@@ -36,7 +36,7 @@ struct HabitListView: View {
                 }
                 .padding()
             }
-            .background(Theme.background)
+            .background(Theme.background.ignoresSafeArea())
             .navigationDestination(item: $selectedHabit) { habit in
                 HabitDetailView(habit: habit)
             }

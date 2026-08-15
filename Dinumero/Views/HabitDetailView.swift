@@ -22,7 +22,7 @@ struct HabitDetailView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .background(Theme.background)
+        .background(Theme.background.ignoresSafeArea())
     }
 }
 
