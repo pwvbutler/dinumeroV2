@@ -16,6 +16,11 @@ struct DayGridView: View {
                         Rectangle()
                             .stroke(habit.colour.color, lineWidth: 2)
                     )
+                    .overlay(
+                        Text("\(day + 1)")
+                            .font(.system(.body, design: .default, weight: .bold))
+                            .foregroundStyle(Theme.secondaryText)
+                    )
                     .onTapGesture {
                         if isCompleted {
                             habit.completedDays.remove(day)
