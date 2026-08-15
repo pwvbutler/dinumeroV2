@@ -61,11 +61,8 @@ struct HabitListView: View {
                 if let habit = habitPendingDelete {
                     modelContext.delete(habit)
                 }
-                habitPendingDelete = nil
             }
-            Button("Cancel", role: .cancel) {
-                habitPendingDelete = nil
-            }
+            Button("Cancel", role: .cancel) {}
         }
     }
 }
