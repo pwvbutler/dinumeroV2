@@ -3,15 +3,15 @@ import SwiftUI
 struct DayGridView: View {
     @Bindable var habit: Habit
 
-    private let columns = Array(repeating: GridItem(.fixed(44), spacing: 8), count: 5)
+    private let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 5)
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 8) {
+        LazyVGrid(columns: columns, spacing: 0) {
             ForEach(0..<habit.lengthDays, id: \.self) { day in
                 let isCompleted = habit.completedDays.contains(day)
                 Rectangle()
                     .fill(isCompleted ? habit.colour.color : Theme.background)
-                    .frame(width: 44, height: 44)
+                    .aspectRatio(1, contentMode: .fit)
                     .overlay(
                         Rectangle()
                             .stroke(habit.colour.color, lineWidth: 2)
