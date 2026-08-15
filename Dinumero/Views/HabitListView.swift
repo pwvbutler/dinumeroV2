@@ -5,6 +5,7 @@ struct HabitListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Habit.startDate) private var habits: [Habit]
 
+    @State private var selectedHabit: Habit?
     @State private var habitPendingDelete: Habit?
 
     var body: some View {
@@ -12,13 +13,12 @@ struct HabitListView: View {
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(habits) { habit in
-                        NavigationLink(value: habit.id) {
-                            HabitPillButton(title: habit.title, colour: habit.colour.color)
-                        }
-                        .buttonStyle(.plain)
-                        .onLongPressGesture {
-                            habitPendingDelete = habit
-                        }
+                        HabitPillButton(title: habit.title, colour: habit.colour.color)
+                            .contentShape(Rectangle())
+                            .onTapGesture { selectedHabit = habit }
+                            .onLongPressGesture { habitPendingDelete = habit }
+                            .accessibilityElement(children: .combine)
+                            .accessibilityAddTraits(.isButton)
                     }
 
                     NavigationLink(value: "add") {
@@ -37,10 +37,8 @@ struct HabitListView: View {
                 .padding()
             }
             .background(Theme.background)
-            .navigationDestination(for: UUID.self) { id in
-                if let habit = habits.first(where: { $0.id == id }) {
-                    HabitDetailView(habit: habit)
-                }
+            .navigationDestination(item: $selectedHabit) { habit in
+                HabitDetailView(habit: habit)
             }
             .navigationDestination(for: String.self) { _ in
                 AddHabitView()
