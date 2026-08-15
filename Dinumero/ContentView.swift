@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Dinumero")
+        HabitListView()
     }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(for: Habit.self, inMemory: true)
 }
