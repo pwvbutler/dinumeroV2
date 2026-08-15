@@ -6,11 +6,11 @@ struct ColourSwatchPicker: View {
     var body: some View {
         HStack(spacing: 16) {
             ForEach(HabitColour.allCases, id: \.self) { colour in
-                Circle()
+                Rectangle()
                     .fill(colour.color)
                     .frame(width: 36, height: 36)
                     .overlay(
-                        Circle()
+                        Rectangle()
                             .stroke(Theme.text, lineWidth: selection == colour ? 3 : 0)
                             .padding(-4)
                     )
