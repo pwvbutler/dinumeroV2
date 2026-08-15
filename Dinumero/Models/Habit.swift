@@ -36,4 +36,11 @@ final class Habit {
         let days = Calendar.current.dateComponents([.day], from: start, to: today).day ?? 0
         return days + 1
     }
+
+    /// 0-based index of today's cell in `completedDays`/the grid; nil if
+    /// today falls outside the habit's `lengthDays` range.
+    var todayIndex: Int? {
+        let i = daysSinceStart - 1
+        return (0..<lengthDays).contains(i) ? i : nil
+    }
 }
