@@ -13,12 +13,13 @@ struct DayGridView: View {
             ForEach(0..<habit.lengthDays, id: \.self) { day in
                 let isCompleted = habit.completedDays.contains(day)
                 let isToday = habit.todayIndex == day
+                let borderColour = (isToday && !isCompleted) ? Theme.accent : habit.colour.color
                 Rectangle()
                     .fill(isCompleted ? habit.colour.color : Theme.background)
                     .aspectRatio(1, contentMode: .fit)
                     .overlay(
                         Rectangle()
-                            .strokeBorder(habit.colour.color, lineWidth: isToday ? 6 : 2)
+                            .strokeBorder(borderColour, lineWidth: 2)
                     )
                     .overlay(
                         Text("\(day + 1)")
