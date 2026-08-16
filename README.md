@@ -11,9 +11,9 @@ A minimalist iOS habit tracker
 
 ## Features
 
-* Custom Habit - Choose the title, length, and colour theme for each habit.
+* **Custom Habit** - Choose the title, length, and colour theme for each habit.
 
-* Minimalist Tracking - Just tap the current day to indicate a complete habit
+* **Minimalist Tracking** - Just tap the current day to indicate a complete habit
 
 ### Palette
 
