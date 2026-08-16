@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="320" height="470" viewBox="0 0 320 470">
-  <rect width="320" height="470" fill="#0C141F"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="560" viewBox="0 0 320 560">
+  <rect x="1" y="1" width="318" height="558" fill="#0C141F" stroke="#3A4453" stroke-width="2"/>
   <text x="20" y="52" font-family="Menlo, monospace" font-weight="700" font-size="22" fill="#18CAE6" letter-spacing="1">MORNING RUN</text>
   <text x="20" y="82" font-family="Menlo, monospace" font-weight="700" font-size="15" fill="#D8DAE7">Day 12 of 25</text>
   <rect x="0" y="150" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
@@ -52,4 +52,6 @@
   <text x="224.0" y="443.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">24</text>
   <rect x="256" y="406" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
   <text x="288.0" y="443.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">25</text>
+
+  <rect x="130" y="538" width="60" height="4" rx="2" fill="#3A4453"/>
 </svg>
