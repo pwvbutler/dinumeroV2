@@ -4,7 +4,7 @@ A minimalist iOS habit tracker
 
 <!-- | Habit list | Habit detail |
 |---|---| -->
-| ![Habit list screen](docs/screens/habit-list.svg) | ![Habit detail screen](docs/screens/habit-detail.svg) |
+![Habit list screen](docs/screens/habit-list.svg) ![Habit detail screen](docs/screens/habit-detail.svg)
 
 ## Features
 
