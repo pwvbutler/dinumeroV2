@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="470" viewBox="0 0 320 470">
+  <rect width="320" height="470" fill="#0C141F"/>
+  <text x="20" y="52" font-family="Menlo, monospace" font-weight="700" font-size="22" fill="#18CAE6" letter-spacing="1">MORNING RUN</text>
+  <text x="20" y="82" font-family="Menlo, monospace" font-weight="700" font-size="15" fill="#D8DAE7">Day 12 of 25</text>
+  <rect x="0" y="150" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="32.0" y="187.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">1</text>
+  <rect x="64" y="150" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="96.0" y="187.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">2</text>
+  <rect x="128" y="150" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="160.0" y="187.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">3</text>
+  <rect x="192" y="150" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="224.0" y="187.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">4</text>
+  <rect x="256" y="150" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="288.0" y="187.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">5</text>
+  <rect x="0" y="214" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="32.0" y="251.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">6</text>
+  <rect x="64" y="214" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="96.0" y="251.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">7</text>
+  <rect x="128" y="214" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="160.0" y="251.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">8</text>
+  <rect x="192" y="214" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="224.0" y="251.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">9</text>
+  <rect x="256" y="214" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="288.0" y="251.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">10</text>
+  <rect x="0" y="278" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="32.0" y="315.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">11</text>
+  <rect x="64" y="278" width="64" height="64" fill="#18CAE6" stroke="#18CAE6" stroke-width="2"/>
+  <text x="96.0" y="315.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">12</text>
+  <rect x="128" y="278" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="160.0" y="315.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">13</text>
+  <rect x="192" y="278" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="224.0" y="315.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">14</text>
+  <rect x="256" y="278" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="288.0" y="315.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">15</text>
+  <rect x="0" y="342" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="32.0" y="379.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">16</text>
+  <rect x="64" y="342" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="96.0" y="379.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">17</text>
+  <rect x="128" y="342" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="160.0" y="379.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">18</text>
+  <rect x="192" y="342" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="224.0" y="379.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">19</text>
+  <rect x="256" y="342" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="288.0" y="379.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">20</text>
+  <rect x="0" y="406" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="32.0" y="443.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">21</text>
+  <rect x="64" y="406" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="96.0" y="443.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">22</text>
+  <rect x="128" y="406" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="160.0" y="443.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">23</text>
+  <rect x="192" y="406" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="224.0" y="443.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">24</text>
+  <rect x="256" y="406" width="64" height="64" fill="#0C141F" stroke="#18CAE6" stroke-width="2"/>
+  <text x="288.0" y="443.0" text-anchor="middle" font-family="Menlo, monospace" font-weight="700" font-size="14" fill="#808080">25</text>
+</svg>
