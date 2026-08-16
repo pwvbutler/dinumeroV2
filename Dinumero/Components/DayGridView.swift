@@ -28,9 +28,9 @@ struct DayGridView: View {
                     )
                     .onTapGesture {
                         if isCompleted {
-                            habit.completedDays.remove(day)
+                            habit.completedDays.removeAll { $0 == day }
                         } else {
-                            habit.completedDays.insert(day)
+                            habit.completedDays.append(day)
                         }
                     }
             }

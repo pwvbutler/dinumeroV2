@@ -8,7 +8,7 @@ final class Habit {
     var colour: HabitColour
     var startDate: Date
     var lengthDays: Int
-    var completedDays: Set<Int>
+    var completedDays: [Int]
     var sortOrder: Int
 
     init(
@@ -17,7 +17,7 @@ final class Habit {
         colour: HabitColour,
         startDate: Date,
         lengthDays: Int,
-        completedDays: Set<Int> = [],
+        completedDays: [Int] = [],
         sortOrder: Int = 0
     ) {
         self.id = id
