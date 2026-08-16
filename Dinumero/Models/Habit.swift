@@ -43,4 +43,10 @@ final class Habit {
         let i = daysSinceStart - 1
         return (0..<lengthDays).contains(i) ? i : nil
     }
+
+    /// `daysSinceStart` clamped to `lengthDays`, for the "Day X of Y" display
+    /// once a habit has run past its length.
+    var displayDay: Int {
+        min(daysSinceStart, lengthDays)
+    }
 }

@@ -11,7 +11,7 @@ struct HabitDetailView: View {
                         .font(.system(.title, design: .default, weight: .bold))
                         .foregroundStyle(habit.colour.color)
 
-                    Text("Day \(habit.daysSinceStart) of \(habit.lengthDays)")
+                    Text("Day \(habit.displayDay) of \(habit.lengthDays)")
                         .font(.system(.body, design: .default, weight: .bold))
                         .foregroundStyle(Theme.text)
                 }

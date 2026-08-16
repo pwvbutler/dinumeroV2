@@ -49,6 +49,18 @@ struct HabitTests {
         #expect(habit.daysSinceStart == 2)
     }
 
+    @Test func displayDayMatchesDaysSinceStartWithinRange() {
+        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28)
+        #expect(habit.displayDay == habit.daysSinceStart)
+    }
+
+    @Test func displayDayClampsToLengthDaysOnceOverrun() {
+        let farPast = Calendar.current.date(byAdding: .day, value: -99, to: .now)!
+        let habit = Habit(title: "Test", colour: .blue, startDate: farPast, lengthDays: 28)
+        #expect(habit.daysSinceStart > habit.lengthDays)
+        #expect(habit.displayDay == 28)
+    }
+
     @Test func completedDaysDefaultsEmpty() {
         let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28)
         #expect(habit.completedDays.isEmpty)
