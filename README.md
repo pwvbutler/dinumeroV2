@@ -2,9 +2,12 @@
 
 A minimalist iOS habit tracker
 
-<!-- | Habit list | Habit detail |
-|---|---| -->
-![Habit list screen](docs/screens/habit-list.svg) ![Habit detail screen](docs/screens/habit-detail.svg)
+<table align="center">
+<tr>
+<td align="center" valign="middle"><strong>Habit list</strong><br><br><img src="docs/screens/habit-list.svg" alt="Habit list screen" width="260"></td>
+<td align="center" valign="middle"><strong>Habit detail</strong><br><br><img src="docs/screens/habit-detail.svg" alt="Habit detail screen" width="260"></td>
+</tr>
+</table>
 
 ## Features
 
