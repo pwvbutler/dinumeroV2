@@ -10,6 +10,8 @@ struct AddHabitView: View {
     @State private var lengthDays = 28
     @State private var showDayNumbers = false
     @State private var showStreak = false
+    @State private var hapticFeedback = false
+    @State private var todayHighlightStyle: TodayHighlightStyle = .accentBorder
 
     private static let titleCharacterLimit = 25
 
@@ -40,6 +42,8 @@ struct AddHabitView: View {
             VStack(spacing: 12) {
                 ToggleChip(label: "Show day numbers", isOn: $showDayNumbers, accent: Theme.secondaryText)
                 ToggleChip(label: "Show streak counter", isOn: $showStreak, accent: Theme.secondaryText)
+                ToggleChip(label: "Haptic feedback", isOn: $hapticFeedback, accent: Theme.secondaryText)
+                TodayHighlightStylePicker(selection: $todayHighlightStyle, accent: Theme.secondaryText)
             }
 
             Spacer()
@@ -59,7 +63,9 @@ struct AddHabitView: View {
                         startDate: .now,
                         lengthDays: lengthDays,
                         showDayNumbers: showDayNumbers,
-                        showStreak: showStreak
+                        showStreak: showStreak,
+                        hapticFeedback: hapticFeedback,
+                        todayHighlightStyle: todayHighlightStyle
                     )
                     modelContext.insert(habit)
                     dismiss()

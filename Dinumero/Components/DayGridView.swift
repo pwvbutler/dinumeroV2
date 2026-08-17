@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct DayGridView: View {
     @Bindable var habit: Habit
@@ -32,6 +33,9 @@ struct DayGridView: View {
 
                 if habit.todayIndex == day {
                     cell.onTapGesture {
+                        if habit.hapticFeedback {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        }
                         if isCompleted {
                             habit.completedDays.removeAll { $0 == day }
                         } else {
@@ -50,29 +54,57 @@ struct DayGridView: View {
         habit.todayIndex == day && !habit.completedDays.contains(day)
     }
 
+    /// Whether a day's border should render at full strength: in
+    /// `.accentBorder` mode, only today; in `.dimOthers` mode, today plus
+    /// any completed day (only empty, non-today cells get dimmed).
+    private func isProminent(_ day: Int) -> Bool {
+        switch habit.todayHighlightStyle {
+        case .accentBorder:
+            return isAccentDay(day)
+        case .dimOthers:
+            return habit.todayIndex == day || habit.completedDays.contains(day)
+        }
+    }
+
+    /// The colour used for a "prominent" edge (see `isProminent`).
+    private var prominentColour: Color {
+        switch habit.todayHighlightStyle {
+        case .accentBorder: Theme.accent
+        case .dimOthers: habit.colour.color
+        }
+    }
+
+    /// The colour used for a non-prominent edge.
+    private var defaultColour: Color {
+        switch habit.todayHighlightStyle {
+        case .accentBorder: habit.colour.color
+        case .dimOthers: habit.colour.color.opacity(0.35)
+        }
+    }
+
     /// Each edge is still owned and drawn by exactly one cell (avoiding
     /// doubled-width shared grid lines), but the colour of a shared edge
     /// (`.trailing`/`.bottom`) is decided by checking *both* cells that
-    /// touch it, so a highlighted "today" cell gets a complete accent ring
-    /// even when its `.leading`/`.top` edges are owned by its neighbours.
+    /// touch it, so a prominent cell (today's accent ring, or a
+    /// today/completed cell in `.dimOthers` mode) gets a complete ring even
+    /// when its `.leading`/`.top` edges are owned by its neighbours.
     private func edgeColours(for day: Int, row: Int, col: Int) -> [(edge: Edge, colour: Color)] {
-        let selfAccent = isAccentDay(day)
-        let defaultColour = habit.colour.color
+        let selfProminent = isProminent(day)
 
         let rightDay = day + 1
         let hasRightNeighbour = col != daysPerRow - 1 && rightDay < habit.lengthDays
-        let trailingAccent = selfAccent || (hasRightNeighbour && isAccentDay(rightDay))
+        let trailingProminent = selfProminent || (hasRightNeighbour && isProminent(rightDay))
 
         let belowDay = day + daysPerRow
         let hasBelowNeighbour = belowDay < habit.lengthDays
-        let bottomAccent = selfAccent || (hasBelowNeighbour && isAccentDay(belowDay))
+        let bottomProminent = selfProminent || (hasBelowNeighbour && isProminent(belowDay))
 
         var result: [(Edge, Color)] = [
-            (.trailing, trailingAccent ? Theme.accent : defaultColour),
-            (.bottom, bottomAccent ? Theme.accent : defaultColour)
+            (.trailing, trailingProminent ? prominentColour : defaultColour),
+            (.bottom, bottomProminent ? prominentColour : defaultColour)
         ]
-        if col == 0 { result.append((.leading, selfAccent ? Theme.accent : defaultColour)) }
-        if row == 0 { result.append((.top, selfAccent ? Theme.accent : defaultColour)) }
+        if col == 0 { result.append((.leading, selfProminent ? prominentColour : defaultColour)) }
+        if row == 0 { result.append((.top, selfProminent ? prominentColour : defaultColour)) }
         return result
     }
 }

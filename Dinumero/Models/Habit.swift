@@ -12,6 +12,10 @@ final class Habit {
     var sortOrder: Int
     var showDayNumbers: Bool = true
     var showStreak: Bool = true
+    var hapticFeedback: Bool = false
+    /// Optional so lightweight migration leaves existing habits with `nil`
+    /// instead of crashing on a missing column; use `todayHighlightStyle`.
+    var todayHighlightStyleRaw: TodayHighlightStyle?
 
     init(
         id: UUID = UUID(),
@@ -22,7 +26,9 @@ final class Habit {
         completedDays: [Int] = [],
         sortOrder: Int = 0,
         showDayNumbers: Bool = false,
-        showStreak: Bool = false
+        showStreak: Bool = false,
+        hapticFeedback: Bool = false,
+        todayHighlightStyle: TodayHighlightStyle = .accentBorder
     ) {
         self.id = id
         self.title = title
@@ -33,6 +39,15 @@ final class Habit {
         self.sortOrder = sortOrder
         self.showDayNumbers = showDayNumbers
         self.showStreak = showStreak
+        self.hapticFeedback = hapticFeedback
+        self.todayHighlightStyleRaw = todayHighlightStyle
+    }
+
+    /// Falls back to `.accentBorder` for habits persisted before this
+    /// setting existed.
+    var todayHighlightStyle: TodayHighlightStyle {
+        get { todayHighlightStyleRaw ?? .accentBorder }
+        set { todayHighlightStyleRaw = newValue }
     }
 
     /// Day 1 on the start date, incrementing once per calendar day thereafter.
