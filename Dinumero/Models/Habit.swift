@@ -9,7 +9,6 @@ final class Habit {
     var startDate: Date
     var lengthDays: Int
     var completedDays: [Int]
-    var sortOrder: Int
     var showDayNumbers: Bool = false
     var showStreak: Bool = false
     var hapticFeedback: Bool = false
@@ -22,7 +21,6 @@ final class Habit {
         startDate: Date,
         lengthDays: Int,
         completedDays: [Int] = [],
-        sortOrder: Int = 0,
         showDayNumbers: Bool = false,
         showStreak: Bool = false,
         hapticFeedback: Bool = false,
@@ -34,7 +32,6 @@ final class Habit {
         self.startDate = startDate
         self.lengthDays = lengthDays
         self.completedDays = completedDays
-        self.sortOrder = sortOrder
         self.showDayNumbers = showDayNumbers
         self.showStreak = showStreak
         self.hapticFeedback = hapticFeedback

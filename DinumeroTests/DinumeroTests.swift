@@ -157,7 +157,6 @@ struct HabitPersistenceTests {
             startDate: start,
             lengthDays: 40,
             completedDays: [0, 3, 7],
-            sortOrder: 2,
             showDayNumbers: false,
             showStreak: false
         )
@@ -174,7 +173,6 @@ struct HabitPersistenceTests {
         #expect(result.startDate == start)
         #expect(result.lengthDays == 40)
         #expect(result.completedDays == [0, 3, 7])
-        #expect(result.sortOrder == 2)
         #expect(result.showDayNumbers == false)
         #expect(result.showStreak == false)
     }
