@@ -21,8 +21,8 @@ final class Habit {
         lengthDays: Int,
         completedDays: [Int] = [],
         sortOrder: Int = 0,
-        showDayNumbers: Bool = true,
-        showStreak: Bool = true
+        showDayNumbers: Bool = false,
+        showStreak: Bool = false
     ) {
         self.id = id
         self.title = title

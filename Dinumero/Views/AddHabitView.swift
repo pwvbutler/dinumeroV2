@@ -8,8 +8,8 @@ struct AddHabitView: View {
     @State private var title = ""
     @State private var colour: HabitColour = .blue
     @State private var lengthDays = 28
-    @State private var showDayNumbers = true
-    @State private var showStreak = true
+    @State private var showDayNumbers = false
+    @State private var showStreak = false
 
     private static let titleCharacterLimit = 25
 
