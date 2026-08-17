@@ -61,9 +61,21 @@ struct HabitTests {
         #expect(habit.displayDay == 28)
     }
 
-    @Test func completedDaysDefaultsEmpty() {
+    @Test func dayCountsDefaultsEmpty() {
         let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28)
-        #expect(habit.completedDays.isEmpty)
+        #expect(habit.dayCounts.isEmpty)
+    }
+
+    @Test func timesPerDayDefaultsToOne() {
+        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28)
+        #expect(habit.timesPerDay == 1)
+    }
+
+    @Test func isCompletedTrueOnceCountReachesTarget() {
+        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28, dayCounts: [0: 2], timesPerDay: 3)
+        #expect(habit.isCompleted(0) == false)
+        habit.dayCounts[0] = 3
+        #expect(habit.isCompleted(0) == true)
     }
 
     @Test func distinctHabitsWithSameTitleGetDistinctIDs() {
@@ -110,26 +122,36 @@ struct HabitStreakTests {
     }
 
     @Test func currentStreakCountsTodayWhenMarked() {
-        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28, completedDays: [0])
+        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28, dayCounts: [0: 1])
         #expect(habit.currentStreak == 1)
     }
 
     @Test func currentStreakUsesGraceWhenTodayNotYetMarked() {
         // Started 2 days ago: index 2 is today. Days 0 and 1 marked, today not.
-        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(2), lengthDays: 28, completedDays: [0, 1])
+        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(2), lengthDays: 28, dayCounts: [0: 1, 1: 1])
         #expect(habit.currentStreak == 2)
     }
 
     @Test func currentStreakStopsAtGapBeforeYesterday() {
         // Started 2 days ago: day 0 and today (index 2) marked, yesterday (index 1) skipped.
-        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(2), lengthDays: 28, completedDays: [0, 2])
+        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(2), lengthDays: 28, dayCounts: [0: 1, 2: 1])
         #expect(habit.currentStreak == 1)
     }
 
     @Test func currentStreakCountsFromFinalDayOnceHabitHasFinished() {
-        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(99), lengthDays: 5, completedDays: [2, 3, 4])
+        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(99), lengthDays: 5, dayCounts: [2: 1, 3: 1, 4: 1])
         #expect(habit.displayDay == 5)
         #expect(habit.currentStreak == 3)
+    }
+
+    @Test func currentStreakRequiresFullCountWhenTimesPerDayAboveOne() {
+        // Today (index 0) only partially completed shouldn't count; grace
+        // falls back to yesterday, which was fully completed.
+        let habit = Habit(
+            title: "Test", colour: .blue, startDate: daysAgo(1), lengthDays: 28,
+            dayCounts: [0: 3, 1: 1], timesPerDay: 3
+        )
+        #expect(habit.currentStreak == 1)
     }
 }
 
@@ -156,7 +178,8 @@ struct HabitPersistenceTests {
             colour: .purple,
             startDate: start,
             lengthDays: 40,
-            completedDays: [0, 3, 7],
+            dayCounts: [0: 1, 3: 2, 7: 1],
+            timesPerDay: 2,
             showDayNumbers: false,
             showStreak: false
         )
@@ -172,7 +195,8 @@ struct HabitPersistenceTests {
         #expect(result.colour == .purple)
         #expect(result.startDate == start)
         #expect(result.lengthDays == 40)
-        #expect(result.completedDays == [0, 3, 7])
+        #expect(result.dayCounts == [0: 1, 3: 2, 7: 1])
+        #expect(result.timesPerDay == 2)
         #expect(result.showDayNumbers == false)
         #expect(result.showStreak == false)
     }
