@@ -2,7 +2,9 @@
 
 A minimalist iOS habit tracker
 
-![Dinumero demo](docs/recording/demo.gif)
+<p align="center">
+  <img src="docs/recording/demo.gif" alt="Dinumero demo" width="260">
+</p>
 
 ## Features
 
