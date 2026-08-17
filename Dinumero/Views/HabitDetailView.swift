@@ -11,14 +11,18 @@ struct HabitDetailView: View {
                         .font(.system(.title, design: .default, weight: .bold))
                         .foregroundStyle(habit.colour.color)
 
-                    Text("Day \(habit.displayDay) of \(habit.lengthDays)")
-                        .font(.system(.body, design: .default, weight: .bold))
-                        .foregroundStyle(Theme.text)
-
-                    if habit.showStreak {
-                        Text("🔥 \(habit.currentStreak) day streak")
+                    HStack {
+                        Text("Day \(habit.displayDay) of \(habit.lengthDays)")
                             .font(.system(.body, design: .default, weight: .bold))
                             .foregroundStyle(Theme.text)
+
+                        if habit.showStreak {
+                            Spacer()
+
+                            Text("\(habit.currentStreak) 🔥")
+                                .font(.system(.body, design: .default, weight: .bold))
+                                .foregroundStyle(Theme.text)
+                        }
                     }
                 }
                 .padding(.horizontal)
