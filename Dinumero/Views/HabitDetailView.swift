@@ -14,6 +14,12 @@ struct HabitDetailView: View {
                     Text("Day \(habit.displayDay) of \(habit.lengthDays)")
                         .font(.system(.body, design: .default, weight: .bold))
                         .foregroundStyle(Theme.text)
+
+                    if habit.showStreak {
+                        Text("🔥 \(habit.currentStreak) day streak")
+                            .font(.system(.body, design: .default, weight: .bold))
+                            .foregroundStyle(Theme.text)
+                    }
                 }
                 .padding(.horizontal)
                 .padding(.top)

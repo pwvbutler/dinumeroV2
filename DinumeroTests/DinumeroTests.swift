@@ -71,6 +71,49 @@ struct HabitTests {
         let b = Habit(title: "Read", colour: .green, startDate: .now, lengthDays: 28)
         #expect(a.id != b.id)
     }
+
+    @Test func showDayNumbersAndShowStreakDefaultToTrue() {
+        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28)
+        #expect(habit.showDayNumbers == true)
+        #expect(habit.showStreak == true)
+    }
+}
+
+// MARK: - Streak
+
+struct HabitStreakTests {
+
+    private func daysAgo(_ n: Int) -> Date {
+        Calendar.current.date(byAdding: .day, value: -n, to: .now)!
+    }
+
+    @Test func currentStreakIsZeroWithNoCompletions() {
+        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28)
+        #expect(habit.currentStreak == 0)
+    }
+
+    @Test func currentStreakCountsTodayWhenMarked() {
+        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28, completedDays: [0])
+        #expect(habit.currentStreak == 1)
+    }
+
+    @Test func currentStreakUsesGraceWhenTodayNotYetMarked() {
+        // Started 2 days ago: index 2 is today. Days 0 and 1 marked, today not.
+        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(2), lengthDays: 28, completedDays: [0, 1])
+        #expect(habit.currentStreak == 2)
+    }
+
+    @Test func currentStreakStopsAtGapBeforeYesterday() {
+        // Started 2 days ago: day 0 and today (index 2) marked, yesterday (index 1) skipped.
+        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(2), lengthDays: 28, completedDays: [0, 2])
+        #expect(habit.currentStreak == 1)
+    }
+
+    @Test func currentStreakCountsFromFinalDayOnceHabitHasFinished() {
+        let habit = Habit(title: "Test", colour: .blue, startDate: daysAgo(99), lengthDays: 5, completedDays: [2, 3, 4])
+        #expect(habit.displayDay == 5)
+        #expect(habit.currentStreak == 3)
+    }
 }
 
 // MARK: - Persistence
@@ -97,7 +140,9 @@ struct HabitPersistenceTests {
             startDate: start,
             lengthDays: 40,
             completedDays: [0, 3, 7],
-            sortOrder: 2
+            sortOrder: 2,
+            showDayNumbers: false,
+            showStreak: false
         )
         context.insert(habit)
         try context.save()
@@ -113,6 +158,8 @@ struct HabitPersistenceTests {
         #expect(result.lengthDays == 40)
         #expect(result.completedDays == [0, 3, 7])
         #expect(result.sortOrder == 2)
+        #expect(result.showDayNumbers == false)
+        #expect(result.showStreak == false)
     }
 
     @Test func duplicateTitlesPersistIndependently() throws {

@@ -8,6 +8,8 @@ struct AddHabitView: View {
     @State private var title = ""
     @State private var colour: HabitColour = .blue
     @State private var lengthDays = 28
+    @State private var showDayNumbers = true
+    @State private var showStreak = true
 
     private static let titleCharacterLimit = 25
 
@@ -35,6 +37,11 @@ struct AddHabitView: View {
             Stepper("Length: \(lengthDays) days", value: $lengthDays, in: 1...365)
                 .foregroundStyle(Theme.text)
 
+            VStack(spacing: 12) {
+                ToggleChip(label: "Show day numbers", isOn: $showDayNumbers, accent: colour.color)
+                ToggleChip(label: "Show streak counter", isOn: $showStreak, accent: colour.color)
+            }
+
             Spacer()
 
             HStack(spacing: 16) {
@@ -50,7 +57,9 @@ struct AddHabitView: View {
                         title: trimmedTitle,
                         colour: colour,
                         startDate: .now,
-                        lengthDays: lengthDays
+                        lengthDays: lengthDays,
+                        showDayNumbers: showDayNumbers,
+                        showStreak: showStreak
                     )
                     modelContext.insert(habit)
                     dismiss()

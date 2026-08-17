@@ -10,6 +10,8 @@ final class Habit {
     var lengthDays: Int
     var completedDays: [Int]
     var sortOrder: Int
+    var showDayNumbers: Bool = true
+    var showStreak: Bool = true
 
     init(
         id: UUID = UUID(),
@@ -18,7 +20,9 @@ final class Habit {
         startDate: Date,
         lengthDays: Int,
         completedDays: [Int] = [],
-        sortOrder: Int = 0
+        sortOrder: Int = 0,
+        showDayNumbers: Bool = true,
+        showStreak: Bool = true
     ) {
         self.id = id
         self.title = title
@@ -27,6 +31,8 @@ final class Habit {
         self.lengthDays = lengthDays
         self.completedDays = completedDays
         self.sortOrder = sortOrder
+        self.showDayNumbers = showDayNumbers
+        self.showStreak = showStreak
     }
 
     /// Day 1 on the start date, incrementing once per calendar day thereafter.
@@ -48,5 +54,26 @@ final class Habit {
     /// once a habit has run past its length.
     var displayDay: Int {
         min(daysSinceStart, lengthDays)
+    }
+
+    /// Consecutive completed days counting back from today. If today isn't
+    /// marked yet, counts back from yesterday instead (grace period until
+    /// the day ends) rather than dropping straight to zero. Once the habit's
+    /// run has finished, counts back from its final day instead of today.
+    var currentStreak: Int {
+        let completed = Set(completedDays)
+        var index = displayDay - 1
+        guard index >= 0 else { return 0 }
+
+        if !completed.contains(index) {
+            index -= 1
+        }
+
+        var streak = 0
+        while index >= 0, completed.contains(index) {
+            streak += 1
+            index -= 1
+        }
+        return streak
     }
 }
