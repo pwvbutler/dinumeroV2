@@ -72,10 +72,10 @@ struct HabitTests {
         #expect(a.id != b.id)
     }
 
-    @Test func showDayNumbersAndShowStreakDefaultToTrue() {
+    @Test func showDayNumbersAndShowStreakDefaultToFalse() {
         let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28)
-        #expect(habit.showDayNumbers == true)
-        #expect(habit.showStreak == true)
+        #expect(habit.showDayNumbers == false)
+        #expect(habit.showStreak == false)
     }
 
     @Test func todayIndexIsZeroOnStartDate() {

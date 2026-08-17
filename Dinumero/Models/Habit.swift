@@ -10,8 +10,8 @@ final class Habit {
     var lengthDays: Int
     var completedDays: [Int]
     var sortOrder: Int
-    var showDayNumbers: Bool = true
-    var showStreak: Bool = true
+    var showDayNumbers: Bool = false
+    var showStreak: Bool = false
     var hapticFeedback: Bool = false
     var todayHighlightStyle: TodayHighlightStyle = TodayHighlightStyle.accentBorder
 
