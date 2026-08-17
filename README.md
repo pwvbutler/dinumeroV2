@@ -2,11 +2,7 @@
 
 A minimalist iOS habit tracker
 
-<table align="center">
-<tr>
-<td align="center" valign="middle"><strong>Habit list</strong><br><br><img src="docs/recording/demo.gif" alt="Dinumero demo" width="260"></td>
-</tr>
-</table>
+![Dinumero demo](docs/recording/demo.gif)
 
 ## Features
 
