@@ -38,8 +38,8 @@ struct AddHabitView: View {
                 .foregroundStyle(Theme.text)
 
             VStack(spacing: 12) {
-                ToggleChip(label: "Show day numbers", isOn: $showDayNumbers, accent: colour.color)
-                ToggleChip(label: "Show streak counter", isOn: $showStreak, accent: colour.color)
+                ToggleChip(label: "Show day numbers", isOn: $showDayNumbers, accent: Theme.secondaryText)
+                ToggleChip(label: "Show streak counter", isOn: $showStreak, accent: Theme.secondaryText)
             }
 
             Spacer()
