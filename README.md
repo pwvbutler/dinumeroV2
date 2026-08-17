@@ -16,7 +16,7 @@ A minimalist iOS habit tracker
 
 ### Palette
 
-| Role | Swatch | Hex |
+| Role | Colour | Hex |
 |---|---|---|
 | Background | ![](docs/swatches/background.svg) | `#0C141F` |
 | Text | ![](docs/swatches/text.svg) | `#D8DAE7` |
@@ -45,8 +45,3 @@ Or from the command line:
 xcodebuild -scheme Dinumero -destination 'generic/platform=iOS Simulator' build
 xcodebuild -scheme Dinumero -destination 'platform=iOS Simulator,name=iPhone 16' test
 ```
-
-## Future Features
-* Track current streak
-* Customise the display to reduce further
-* Multiple times per day habits
