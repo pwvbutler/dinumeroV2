@@ -8,6 +8,7 @@ struct AddHabitView: View {
     @State private var title = ""
     @State private var colour: HabitColour = .blue
     @State private var lengthDays = 28
+    @State private var timesPerDay = 1
     @State private var showDayNumbers = false
     @State private var showStreak = false
     @State private var hapticFeedback = false
@@ -39,6 +40,9 @@ struct AddHabitView: View {
             Stepper("Length: \(lengthDays) days", value: $lengthDays, in: 1...365)
                 .foregroundStyle(Theme.text)
 
+            Stepper("Times per day: \(timesPerDay)", value: $timesPerDay, in: 1...10)
+                .foregroundStyle(Theme.text)
+
             VStack(spacing: 12) {
                 ToggleChip(label: "Show day numbers", isOn: $showDayNumbers, accent: Theme.secondaryText)
                 ToggleChip(label: "Show streak counter", isOn: $showStreak, accent: Theme.secondaryText)
@@ -62,6 +66,7 @@ struct AddHabitView: View {
                         colour: colour,
                         startDate: .now,
                         lengthDays: lengthDays,
+                        timesPerDay: timesPerDay,
                         showDayNumbers: showDayNumbers,
                         showStreak: showStreak,
                         hapticFeedback: hapticFeedback,

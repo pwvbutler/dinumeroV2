@@ -12,11 +12,20 @@ struct DayGridView: View {
     var body: some View {
         LazyVGrid(columns: columns, spacing: 0) {
             ForEach(0..<habit.lengthDays, id: \.self) { day in
-                let isCompleted = habit.completedDays.contains(day)
+                let fraction = habit.timesPerDay > 0
+                    ? min(1.0, Double(habit.count(for: day)) / Double(habit.timesPerDay))
+                    : 0.0
                 let row = day / daysPerRow
                 let col = day % daysPerRow
-                let cell = Rectangle()
-                    .fill(isCompleted ? habit.colour.color : Theme.background)
+                let cell = ZStack {
+                    Rectangle().fill(Theme.background)
+                    GeometryReader { geometry in
+                        Rectangle()
+                            .fill(habit.colour.color)
+                            .frame(height: geometry.size.height * fraction)
+                            .frame(maxHeight: .infinity, alignment: .bottom)
+                    }
+                }
                     .aspectRatio(1, contentMode: .fit)
                     .overlay(
                         EdgeBorder(edges: edgeColours(for: day, row: row, col: col), lineWidth: 2)
@@ -36,10 +45,11 @@ struct DayGridView: View {
                         if habit.hapticFeedback {
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         }
-                        if isCompleted {
-                            habit.completedDays.removeAll { $0 == day }
+                        let current = habit.count(for: day)
+                        if current >= habit.timesPerDay {
+                            habit.dayCounts.removeValue(forKey: day)
                         } else {
-                            habit.completedDays.append(day)
+                            habit.dayCounts[day] = current + 1
                         }
                     }
                 } else {
@@ -51,7 +61,7 @@ struct DayGridView: View {
 
     /// A day is highlighted only while it's today and not yet completed.
     private func isAccentDay(_ day: Int) -> Bool {
-        habit.todayIndex == day && !habit.completedDays.contains(day)
+        habit.todayIndex == day && !habit.isCompleted(day)
     }
 
     /// Whether a day's border should render at full strength: in
@@ -62,7 +72,7 @@ struct DayGridView: View {
         case .accentBorder:
             return isAccentDay(day)
         case .dimOthers:
-            return habit.todayIndex == day || habit.completedDays.contains(day)
+            return habit.todayIndex == day || habit.isCompleted(day)
         }
     }
 
