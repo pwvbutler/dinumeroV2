@@ -13,6 +13,7 @@ final class Habit {
     var showDayNumbers: Bool = true
     var showStreak: Bool = true
     var hapticFeedback: Bool = false
+    var todayHighlightStyle: TodayHighlightStyle = TodayHighlightStyle.accentBorder
 
     init(
         id: UUID = UUID(),
