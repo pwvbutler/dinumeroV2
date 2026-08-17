@@ -77,6 +77,23 @@ struct HabitTests {
         #expect(habit.showDayNumbers == true)
         #expect(habit.showStreak == true)
     }
+
+    @Test func todayIndexIsZeroOnStartDate() {
+        let habit = Habit(title: "Test", colour: .blue, startDate: .now, lengthDays: 28)
+        #expect(habit.todayIndex == 0)
+    }
+
+    @Test func todayIndexTracksDaysSinceStart() {
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: .now)!
+        let habit = Habit(title: "Test", colour: .blue, startDate: yesterday, lengthDays: 28)
+        #expect(habit.todayIndex == 1)
+    }
+
+    @Test func todayIndexIsNilOnceHabitHasFinished() {
+        let farPast = Calendar.current.date(byAdding: .day, value: -99, to: .now)!
+        let habit = Habit(title: "Test", colour: .blue, startDate: farPast, lengthDays: 28)
+        #expect(habit.todayIndex == nil)
+    }
 }
 
 // MARK: - Streak

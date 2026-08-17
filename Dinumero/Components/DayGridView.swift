@@ -14,7 +14,7 @@ struct DayGridView: View {
                 let isCompleted = habit.completedDays.contains(day)
                 let row = day / daysPerRow
                 let col = day % daysPerRow
-                Rectangle()
+                let cell = Rectangle()
                     .fill(isCompleted ? habit.colour.color : Theme.background)
                     .aspectRatio(1, contentMode: .fit)
                     .overlay(
@@ -29,13 +29,18 @@ struct DayGridView: View {
                             }
                         }
                     )
-                    .onTapGesture {
+
+                if habit.todayIndex == day {
+                    cell.onTapGesture {
                         if isCompleted {
                             habit.completedDays.removeAll { $0 == day }
                         } else {
                             habit.completedDays.append(day)
                         }
                     }
+                } else {
+                    cell
+                }
             }
         }
     }
