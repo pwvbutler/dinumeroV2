@@ -83,6 +83,7 @@ struct AddHabitView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Theme.background)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
