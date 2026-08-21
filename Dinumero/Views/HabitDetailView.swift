@@ -29,6 +29,7 @@ struct HabitDetailView: View {
                 .padding(.top)
 
                 DayGridView(habit: habit)
+                    .padding(.horizontal)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
